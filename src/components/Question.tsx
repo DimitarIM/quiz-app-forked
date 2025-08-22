@@ -5,20 +5,20 @@ import OptionList from './OptionList';
 import questions from '@/data/data';
 import NextButton from './NextButton';
 
-function FinishButtoon({ rightAnswers, wrongAnswers }: { rightAnswers: number, wrongAnswers: number, }) {
+function FinishButton({ rightAnswers, wrongAnswers }: { rightAnswers: number, wrongAnswers: number, }) {
   const [isActive, setActive] = useState<boolean>(false);
   return (
     <>
       <div className='flex flex-row-reverse'>
         {!isActive && <button onClick={() => setActive(true)}
-          className='flex cursor-pointer w-5 h-full p-3 bg-foreground shadow-global rounded-2xl px-5'>
+          className='lex cursor-pointer w-fit h-full p-2 rounded-2xl font-bold shadow-global bg-background'>
           FINISH
         </button>}
       </div>
 
       {
-        isActive && <div data-testid="results">
-          <h3>Final results:</h3>
+        isActive && <div data-testid="results" className='flex flex-col w-full justify-center gap-1'>
+          <h3 className='font-bold'>Final results:</h3>
           <div data-testid="right-answers">Right:{rightAnswers}</div>
           <div data-testid="wrong-answers">Wrong:{wrongAnswers}</div>
         </div>
@@ -57,16 +57,19 @@ function Question() {
 
 
   return (
-    <div className='bg-question flex flex-col items-center justify-center pt-4 pb-8 px-8 gap-4 w-fit h-fit max-w-100 rounded-2xl text-center'>
+    <div className='bg-question flex flex-col items-center justify-center pt-4 pb-8 px-8 gap-4 w-fit h-fit min-w-100 max-w-100 rounded-2xl text-center'>
       <div className='flex gap-2'>
         <h2>Question {questionNum} of {questions.length}</h2>
       </div>
       <h3 className='font-bold text-wrap'>{questions[questionNum - 1].question}</h3>
+
       <OptionList handleClick={handleClick} userAnswer={userAnswer} rightAnswer={questions[questionNum - 1].correctAnswer} questionNumber={questionNum - 1} />
 
-      {userAnswer !== "" && !hasAnswered && questionNum < 5 && <NextButton changeQuestion={changeQuestion} />}
+      <div className='flex flex-row-reverse just-end items-end w-full pt-5'>
+        {userAnswer !== "" && !hasAnswered && questionNum < 5 && <NextButton changeQuestion={changeQuestion} />}
 
-      {!hasAnswered && questionNum === 5 && <FinishButtoon rightAnswers={rightAnswers} wrongAnswers={wrongAnswers} />}
+        {!hasAnswered && questionNum === 5 && <FinishButton rightAnswers={rightAnswers} wrongAnswers={wrongAnswers} />}
+      </div>
     </div>
   )
 }
