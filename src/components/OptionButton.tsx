@@ -14,7 +14,7 @@ function OptionButton({ option, handleClick, userAnswer, rightAnswer }:
   }
 
   return (
-    <button data-testid="option-button" disabled={userAnswer !== ""}
+    <button data-testid="option-button" disabled={userAnswer !== "" && userAnswer !== "Option 1"}
       onClick={() => buttonLogic()}
       className={`flex cursor-pointer w-full h-full p-3 bg-foreground shadow-global rounded-2xl px-5 ${btnClass}`}>
       {option}
