@@ -63,3 +63,5 @@ describe("Tests that the option buttons work", () => {
         expect(button).toHaveClass("wrong");
     })
 })
+
+//Did not account for the "disabled" attribute for the buttons. I've used userAnswer as a status for it to be checked and disable each button accordingly, but the test caused some problems with it since it already sets userAnswer's value, and so it disables the button before being able to be checked if it has a class or not. Maybe there was a better way of disabling the buttons that I didn't find, but I would've just have made a global state specific for the optionButtons that disables them.

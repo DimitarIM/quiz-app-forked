@@ -8,3 +8,5 @@ it("tests that the next button has the right name", () => {
     expect(nextButton).toBeInTheDocument();
 });
 
+//Should have had more than one test. The function it takes and its full purpose is unknown and should've been tested here.
+
