@@ -1,9 +1,3 @@
-type questionsTypes = {
-    question: string;
-    wrongOptions: string[];
-    rightOption: string;
-}
-
 const questions = [
   {
     question: "Which animal can survive being frozen solid and thawed back to life?",
@@ -33,4 +27,3 @@ const questions = [
 ];
 
 export default questions;
-export type { questionsTypes };
